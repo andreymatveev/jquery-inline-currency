@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+    <script src="./js/jquery.inline-currency.js"></script>
+    <script>
+    $(document).ready(function () {
+        $('.js-inline-currency').inlineCurrency();
+    });
+    </script>
+    <title></title>
+    <link rel="stylesheet" href="">
+</head>
+<body>
+    <h1>Demo 111</h1>
+    <p>Put value just in USD and the plugin will do everything else <span class="js-inline-currency" data-jic-value="1" data-jic-current="usd">$1</span>.</p>
+    <p>Or just in EUR, like this: <span class="js-inline-currency">10 EUR</span></p>
+    <p>Or just in rubles, like this: <span class="js-inline-currency" data-jic-value="100" data-jic-current="rub" data-jic-convert="eur, usd">100 рублей</span></p>
+
+    <h1>Currencies data</h1>
+    <p>Plugin gets currency rates using <a href="http://finance.yahoo.com/" target="_blank">Yahoo Finance API</a> and stores data in local storage (for each domain it has its own storage). Cached data updates once in 24 hours.</p>
+</body>
+</html>
