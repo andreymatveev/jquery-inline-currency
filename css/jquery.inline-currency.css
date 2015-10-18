@@ -1,0 +1,38 @@
+.jic {
+  position: relative;
+  border-bottom: dotted 1px #ccc;
+  cursor: default;
+}
+.jic:hover {
+  border-bottom: dotted 1px #bbb;
+}
+.jic:hover .jic-container {
+  opacity: 1;
+  visibility: visible;
+}
+.jic-container {
+  position: absolute;
+  z-index: 999;
+  text-align: right;
+  top: 100%;
+  left: 0;
+  margin: 5px 0 0;
+  background: #fff;
+  padding: 0 10px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.15);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 250ms;
+}
+.jic-rate {
+  display: block;
+  color: #444;
+  white-space: nowrap;
+  margin: 5px 0;
+}
+.jic-currency {
+  display: inline-block;
+  font-size: 80%;
+  color: #777;
+  text-transform: uppercase;
+}

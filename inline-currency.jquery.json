@@ -1,0 +1,31 @@
+{
+    "name": "inline-currency",
+    "title": "jQuery Inline Currency",
+    "description": "Simple jQuery plugin for showing prices in different currencies using actual exchange rates",
+    "keywords": [
+        "currency",
+        "exchange",
+        "rates",
+        "inline",
+        "price"
+    ],
+    "version": "0.2.0",
+    "author": {
+        "name": "Andrey Matveev",
+        "email": "hello@andreym.com",
+        "url": "http://andreym.com"
+    },
+    "licenses": [
+        {
+            "type": "MIT",
+            "url": "https://github.com/andreymatveev/jquery-inline-currency/blob/master/LICENSE"
+        }
+    ],
+    "bugs": "https://github.com/andreymatveev/jquery-inline-currency/issues",
+    "homepage": "https://github.com/andreymatveev/jquery-inline-currency",
+    "docs": "https://github.com/andreymatveev/jquery-inline-currency",
+    "download": "https://github.com/andreymatveev/jquery-inline-currency",
+    "dependencies": {
+        "jquery": ">=1.6"
+    }
+}

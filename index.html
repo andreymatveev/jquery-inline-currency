@@ -3,23 +3,21 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
     <script src="./js/jquery.inline-currency.js"></script>
+    <link rel="stylesheet" href="./css/jquery.inline-currency.css"></link>
     <script>
     $(document).ready(function () {
-        $('.js-inline-currency').inlineCurrency();
+      $('.jic').inlineCurrency();
     });
     </script>
     <title></title>
     <link rel="stylesheet" href="">
 </head>
-<body>
-    <h1>Demo 111</h1>
-    <p>Put value just in USD and the plugin will do everything else <span class="js-inline-currency" data-jic-value="1" data-jic-current="usd">$1</span>.</p>
-    <p>Or just in EUR, like this: <span class="js-inline-currency">10 EUR</span></p>
-    <p>Or just in rubles, like this: <span class="js-inline-currency" data-jic-value="100" data-jic-current="rub" data-jic-convert="eur, usd">100 рублей</span></p>
-
-    <h1>Currencies data</h1>
-    <p>Plugin gets currency rates using <a href="http://finance.yahoo.com/" target="_blank">Yahoo Finance API</a> and stores data in local storage (for each domain it has its own storage). Cached data updates once in 24 hours.</p>
+<body style="font-family: Helvetica, Arial, sans-serif;">
+    <h1>Demo</h1>
+    <p>Put value just in USD and the plugin will do everything else <span class="jic" data-jic-value="1" data-jic-currency="usd" data-jic-convert-to="eur, rub">$1</span>.</p>
+    <p>Or just in EUR, like this: <span class="jic" data-jic-currency="EUR" data-jic-convert-to="rub, usd, chf">10 EUR</span></p>
+    <p>Or just in rubles, like this: <span class="jic" data-jic-value="100" data-jic-currency="rub" data-jic-convert-to="eur, usd">100 рублей</span></p>
 </body>
 </html>
