@@ -52,7 +52,7 @@
         }
       }
 
-      $.getJSON('http://api.fixer.io/latest', {
+      $.getJSON('//api.fixer.io/latest', {
           base: options.currency,
           symbols: options.convertTo.join(',')
         },
