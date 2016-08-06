@@ -52,8 +52,10 @@ All parameters are optional.
 - `convertTo` — comma-separated list of currencies to convert to
 
 ### Price recognition
-- `thousandsSplit` - thousands separator
-- `decimalSplit` - decimal separator
+- `thousandsSplit` - thousands separator (can be empty, space, `.` or `,`)
+- `decimalsSplit` - decimals separator  (can be empty, space, `.` or `,`)
+
+Remember that this parameters can't be equal. 
 
 ### Tooltip generation setup
 - `containerElement` and `containerClass` - element that will be appended to each price

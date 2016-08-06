@@ -1,6 +1,6 @@
 (function ($) {
     // plugin current version, please don't change it
-    const version = "0.3.0";
+    const version = "0.3.2";
 
     var LS_NAME = "$$jqueryInlineCurrency$$",
         LS_EXCHANGE = null;
@@ -16,16 +16,27 @@
         "rateClass": "jic-rate",
         "currencyElement": "span",
         "currencyClass": "jic-currency",
-        "debug": false
+        "currencySplit": false,
+        "debug": true
     };
 
-    var updateDeferred = $.Deferred();
+    var updateDeferred = $.Deferred(),
+        thousandsSplitRegExp = null,
+        decimalsSplitRegExp = null;
 
     $.fn.inlineCurrency = function (options) {
         var $root = this;
 
         options = $.extend(defaults, options);
         options.convertTo = getListIfCommaString(options.convertTo);
+
+        if (options.thousandsSplit) {
+            thousandsSplitRegExp = parseSeparator(options.thousandsSplit);
+        }
+        if (options.decimalsSplit) {
+            decimalsSplitRegExp = parseSeparator(options.decimalsSplit);
+        }
+
         if (options.convertTo) {
             options.convertTo = options.convertTo.sort().map(function (item) {
                 return item.toUpperCase();
@@ -52,6 +63,16 @@
             })
 
         return $root;
+
+        function parseSeparator(value) {
+            if (value) {
+                return value
+                    .replace(/[^\s\.,]/gi, "")
+                    .replace(/\s+/gi, "\\s")
+                    .replace(/\./gi, "\\.");
+            }
+            else return "";
+        }
 
         function updateRates() {
             var ex = JSON.parse(window.localStorage.getItem(LS_NAME)),
@@ -144,16 +165,34 @@
             }
         }
 
-        function getNumberFromText($object) {
-            var text = $object.text();
-            var matches = new RegExp('(\\d+' + (options.thousandsSplit ? '(?:\\' + options.thousandsSplit + '\\d+)*' : '') + '(?:\\' + options.decimalsSplit + '\\d+)?)+').exec(text);
-            return matches && matches.length ? matches[0] : 0;
+        function parsePrice(text) {
+            var matches = new RegExp('(\\d+' + (options.thousandsSplit ? '(?:' + options.thousandsSplit + '\\d+)*' : '') + '(?:' + options.decimalsSplit + '\\d+)?)+').exec(text);
+            if (matches && matches.length) {
+                if (thousandsSplitRegExp) {
+                    matches[0] = matches[0].replace(new RegExp(thousandsSplitRegExp, "g"), "");
+                }
+                if (decimalsSplitRegExp) {
+                    matches[0] = matches[0].replace(new RegExp(decimalsSplitRegExp, "g"), ".");
+                }
+                return parseFloat(matches[0]);
+            }
+            return 0;
+        }
+
+        function formatPrice(price) {
+            if (options.thousandsSplit) {
+                price = (price + '').replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1" + options.thousandsSplit);
+            }
+            if (options.decimalsSplit) {
+                price = (price + '').replace(/(\d+)\.(\d+)/, "$1" + options.decimalsSplit + "$2");
+            }
+            return price;
         }
 
         function printObjectCurrencies($object) {
             var str = "",
                 originalStr = $object.html(),
-                value = $object.data("jic-value") || getNumberFromText($object),
+                value = $object.data("jic-value") || parsePrice($object.text()),
                 currency = $object.data("jic-currency") || options.currency,
                 convertTo = getListIfCommaString($object.data("jic-convert-to") || options.convertTo);
 
@@ -163,10 +202,10 @@
 
                 var val = convertCurrency(value, currency, convertTo[i]);
                 if (val) {
-                    if (options.rateElement) {
+                    if (! options.currencySplit && options.rateElement) {
                         str += '<' + options.rateElement +
                             (options.rateClass ? ' class="' + options.rateClass + '"' : '') + '>' +
-                            val + ' ' +
+                            formatPrice(val) + ' ' +
                             (options.currencyElement ? '<' + options.currencyElement +
                                 (options.currencyClass ? ' class="' + options.currencyClass + '"' : '') +
                                 '>' : '') +
@@ -174,7 +213,7 @@
                             (options.currencyElement ? '</' + options.currencyElement + '>' : '') +
                             '</' + options.rateElement + '>';
                     } else if (options.currencySplit) {
-                        str += (!str ? "" : ", ") + val + ' ' + convertTo[i].toUpperCase();
+                        str += (!str ? "" : ", ") + formatPrice(val) + ' ' + convertTo[i].toUpperCase();
                     }
                 }
             }

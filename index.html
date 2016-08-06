@@ -8,9 +8,10 @@
     <link rel="stylesheet" href="./css/jquery.inline-currency.css" />
     <script>
     $(document).ready(function () {
-      $('.jic').inlineCurrency({
-          currency: "USD",
-          convertTo: "RUB, EUR"
+      $('.jic').inlineCurrency();
+      $('.jic-test').inlineCurrency({
+          "thousandsSplit": " ",
+          "decimalsSplit": ","
       });
     });
     </script>
@@ -21,6 +22,13 @@
         padding: 10px 15px;
         display: block;
         margin-top: 5px;
+      }
+      .jic-test {
+          position: relative;
+      }
+      .jic-test:hover .jic-container {
+          opacity: 1;
+          visibility: visible;
       }
     </style>
 </head>
@@ -42,6 +50,12 @@
       &lt;span class="jic" data-jic-value="100" data-jic-currency="rub" data-jic-convert-to="eur, usd"&gt;100 рублей&lt;/span&gt;
     </code>
     <p>Or just in rubles, like this: <span class="jic" data-jic-currency="rub" data-jic-convert-to="eur, usd">100 рублей</span></p>
+
+    <p>
+        Separators test:
+    </p>
+    <p><span class="jic-test">$1 000,01</span></p>
+    <p><span class="jic-test">$100 000,20</span></p>
 
     <p>
       And then, apply inlineCurrency plugin to your elements:
