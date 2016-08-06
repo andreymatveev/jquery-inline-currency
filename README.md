@@ -3,21 +3,28 @@
 Simple jQuery plugin for showing prices in different currencies using actual exchange rates.
 
 ## How to use
-0. Include plugin in the `head` or `body` section after jQuery:
-    `<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.0/jquery.min.js"></script>`
-    `<script src="./js/jquery.inline-currency.min.js"></script>`
+- Include plugin in the `head` or `body` section after jQuery:
+```
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.0/jquery.min.js"></script>
+    <script src="./js/jquery.inline-currency.min.js"></script>
+```
 
-1. Set styles for the currencies tooltip or include my version from `css/jquery.inline-currency.css`;
-    `<link rel="stylesheet" href="./css/jquery.inline-currency.css" />`
+- Set styles for the currencies tooltip or include my version from `css/jquery.inline-currency.css`;
+```
+    <link rel="stylesheet" href="./css/jquery.inline-currency.css" />
+```
 
-2. Put each price into some element, that will be selector for jQuery:
-    `<span class="jic">$10</span>`
+- Put each price into some element, that will be selector for jQuery:
+```
+    <span class="jic">$10</span>
+```
 
-3. Apply `inlineCurrency` plugin to your prices:
-    `$(document).ready(function () {
+- Apply `inlineCurrency` plugin to your prices:
+```
+    $(document).ready(function () {
         $('.jic').inlineCurrency()
-    })`
-    
+    })
+```
 
 ## How it works
 Plugin tries to detect price from text, so this setup will be best with integer or float prices.
