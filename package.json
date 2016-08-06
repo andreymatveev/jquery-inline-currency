@@ -1,6 +1,6 @@
 {
   "name": "jquery-inline-currency",
-  "version": "0.3.0",
+  "version": "0.3.2",
   "description": "Simple jQuery plugin for showing prices in different currencies using actual exchange rates",
   "main": "js/jquery.inline-currency.js",
   "scripts": {
