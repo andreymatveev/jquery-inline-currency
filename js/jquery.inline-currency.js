@@ -203,7 +203,7 @@
                 var val = convertCurrency(value, currency, convertTo[i]);
                 if (val) {
                     if (! options.currencySplit) {
-                        str += '<' + options.rateElement || 'span' +
+                        str += '<' + (options.rateElement || 'span') +
                             (options.rateClass ? ' class="' + options.rateClass + '"' : '') + '>' +
                             formatPrice(val) + ' ' +
                             (options.currencyElement ? '<' + options.currencyElement +
@@ -211,7 +211,7 @@
                                 '>' : '') +
                             convertTo[i].toUpperCase() +
                             (options.currencyElement ? '</' + options.currencyElement + '>' : '') +
-                            '</' + options.rateElement || 'span' + '>';
+                            '</' + (options.rateElement || 'span') + '>';
                     }
                     else {
                         str += (!str ? "" : ", ") + formatPrice(val) + ' ' + convertTo[i].toUpperCase();
@@ -221,10 +221,10 @@
 
             if (str) {
                 if (options.containerElement) {
-                    str = '<' + options.containerElement +
+                    str = '<' + (options.containerElement || 'span') +
                         (options.containerClass ? ' class="' + options.containerClass + '"' : '') + '>' +
                         str +
-                        '</' + options.containerElement + '>';
+                        '</' + (options.containerElement || 'span') + '>';
                 }
                 $object.append($(str));
             }
