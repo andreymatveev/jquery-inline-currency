@@ -17,7 +17,7 @@
         "currencyElement": "span",
         "currencyClass": "jic-currency",
         "currencySplit": false,
-        "debug": true
+        "debug": false
     };
 
     var updateDeferred = $.Deferred(),
@@ -202,8 +202,8 @@
 
                 var val = convertCurrency(value, currency, convertTo[i]);
                 if (val) {
-                    if (! options.currencySplit && options.rateElement) {
-                        str += '<' + options.rateElement +
+                    if (! options.currencySplit) {
+                        str += '<' + options.rateElement || 'span' +
                             (options.rateClass ? ' class="' + options.rateClass + '"' : '') + '>' +
                             formatPrice(val) + ' ' +
                             (options.currencyElement ? '<' + options.currencyElement +
@@ -211,8 +211,9 @@
                                 '>' : '') +
                             convertTo[i].toUpperCase() +
                             (options.currencyElement ? '</' + options.currencyElement + '>' : '') +
-                            '</' + options.rateElement + '>';
-                    } else if (options.currencySplit) {
+                            '</' + options.rateElement || 'span' + '>';
+                    }
+                    else {
                         str += (!str ? "" : ", ") + formatPrice(val) + ' ' + convertTo[i].toUpperCase();
                     }
                 }

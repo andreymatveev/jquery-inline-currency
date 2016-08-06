@@ -41,6 +41,7 @@ Default set:
     "rateClass": "jic-rate",
     "currencyElement": "span",
     "currencyClass": "jic-currency",
+    "currencySplit": false,
     "debug": false
 }
 ```
@@ -55,12 +56,13 @@ All parameters are optional.
 - `thousandsSplit` - thousands separator (can be empty, space, `.` or `,`)
 - `decimalsSplit` - decimals separator  (can be empty, space, `.` or `,`)
 
-Remember that this parameters can't be equal. 
+Remember that this parameters can't be equal.
 
 ### Tooltip generation setup
 - `containerElement` and `containerClass` - element that will be appended to each price
-- `rateElement` and `rateClass` - element and class for each conversion
+- `rateElement` and `rateClass` - element and class for each exchange rate
 - `currencyElement` and `currencyClass` — element for each currency unit
+- `currencySplit` (Boolean or String) — excludes `rateElement` and generates exchange rates separated by `currencySplit` value
 
 ## Inline parameters
 Plugin also supports inline parameters (for exotic cases) which can help set price, base currency and convertTo for each price:
