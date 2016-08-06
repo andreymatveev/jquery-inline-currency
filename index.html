@@ -18,17 +18,33 @@
     <title></title>
     <style media="screen">
       code {
-        background: #eee;
-        padding: 10px 15px;
-        display: block;
-        margin-top: 5px;
+          background: #eee;
+          padding: 5px 20px;
+          display: block;
+          margin-top: 5px;
+          white-space: pre;
+          line-height: 15px;
+          overflow-x: auto;
+      }
+      hr {
+          display: block;
+          height: 1px;
+          width: 100%;
+          background: #ccc;
+          border: none;
+          margin-bottom: 30px;
       }
       .jic-test {
           position: relative;
+          border-bottom: dotted 1px #ccc;
+          cursor: default;
       }
       .jic-test:hover .jic-container {
           opacity: 1;
           visibility: visible;
+      }
+      .demo {
+          font-size: 18px;
       }
     </style>
 </head>
@@ -39,32 +55,43 @@
       First of all, move each price into span element:
     </p>
     <code>
-      &lt;span class="jic"&gt;$10&lt;/span&gt;
+&lt;span class="jic"&gt;$10&lt;/span&gt;
     </code>
-    <p>You can buy it for <span class="jic">$10</span></p>
-    <code>
-      &lt;span class="jic" data-jic-currency="EUR" data-jic-convert-to="rub, usd, chf"&gt;10 EUR&lt;/span&gt;
-    </code>
-    <p>Or just in EUR, like this: <span class="jic" data-jic-value="10" data-jic-currency="EUR" data-jic-convert-to="rub, usd">Ten EUR</span></p>
-    <code>
-      &lt;span class="jic" data-jic-value="100" data-jic-currency="rub" data-jic-convert-to="eur, usd"&gt;100 рублей&lt;/span&gt;
-    </code>
-    <p>Or just in rubles, like this: <span class="jic" data-jic-currency="rub" data-jic-convert-to="eur, usd">100 рублей</span></p>
-
-    <p>
-        Separators test:
-    </p>
-    <p><span class="jic-test">$1 000,01</span></p>
-    <p><span class="jic-test">$100 000,20</span></p>
-
     <p>
       And then, apply inlineCurrency plugin to your elements:
     </p>
+    <code>
+$(document).ready(function () {
+  $('.jic').inlineCurrency();
+});
+    </code>
+    <p>Result:</p>
+    <p class="demo">You can buy it for <span class="jic">$10</span></p>
+    <hr>
+    <p>You can use inline parameters for special cases:</p>
+    <code>
+&lt;span class="jic" data-jic-value="10" data-jic-currency="EUR" data-jic-convert-to="rub, usd, chf"&gt;Ten euros&lt;/span&gt;
+    </code>
+    <p>Result:</p>
+    <p class="demo">
+        <span class="jic" data-jic-value="10" data-jic-currency="EUR" data-jic-convert-to="rub, usd, chf">Ten euros</span>
+    </p>
+    <hr>
+    <p>
+        If you use decimal or thousands separators in prices, you can set config:
+    </p>
 
     <code>
-      $(document).ready(function () {<br>
-      &nbsp;&nbsp;$('.jic').inlineCurrency();<br>
-      });
+$(document).ready(function () {
+  $('.jic-test').inlineCurrency({
+      "thousandsSplit": " ",
+      "decimalsSplit": ","
+  });
+});
     </code>
+
+    <p>Result:</p>
+    <p class="demo"><span class="jic-test">$100 000,20</span></p>
+
 </body>
 </html>
