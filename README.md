@@ -3,6 +3,11 @@
 Simple jQuery plugin for showing prices in different currencies using actual exchange rates.
 
 ## How to use
+- Install plugin using npm or manually
+```
+    npm install jquery-inline-currency
+```
+
 - Include plugin in the `head` or `body` section after jQuery:
 ```
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.0/jquery.min.js"></script>
@@ -21,9 +26,9 @@ Simple jQuery plugin for showing prices in different currencies using actual exc
 
 - Apply `inlineCurrency` plugin to your prices:
 ```
-    $(document).ready(function () {
-        $('.jic').inlineCurrency()
-    })
+    $(function () {
+        $('.jic').inlineCurrency();
+    });
 ```
 
 ## How it works
