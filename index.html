@@ -3,24 +3,54 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.0/jquery.min.js"></script>
     <script src="./js/jquery.inline-currency.js"></script>
     <link rel="stylesheet" href="./css/jquery.inline-currency.css"></link>
     <script>
     $(document).ready(function () {
-      $('.jic').inlineCurrency();
+      $('.jic').inlineCurrency({
+          currency: "USD",
+          convertTo: "RUB, EUR"
+      });
     });
     </script>
     <title></title>
-    <link rel="stylesheet" href="">
+    <style media="screen">
+      code {
+        background: #eee;
+        padding: 10px 15px;
+        display: block;
+        margin-top: 5px;
+      }
+    </style>
 </head>
 <body style="font-family: Helvetica, Arial, sans-serif;">
     <h1>jQuery Inline Currency (JIC) Demo</h1>
+
+    <p>
+      First of all, move each price into span element:
+    </p>
     <code>
-      You can buy it for &lt;span class="jic"&gt;$10&lt;/span&gt;
+      &lt;span class="jic"&gt;$10&lt;/span&gt;
     </code>
     <p>You can buy it for <span class="jic">$10</span></p>
-    <p>Or just in EUR, like this: <span class="jic" data-jic-currency="EUR" data-jic-convert-to="rub, usd, chf">10 EUR</span></p>
-    <p>Or just in rubles, like this: <span class="jic" data-jic-value="100" data-jic-currency="rub" data-jic-convert-to="eur, usd">100 рублей</span></p>
+    <code>
+      &lt;span class="jic" data-jic-currency="EUR" data-jic-convert-to="rub, usd, chf"&gt;10 EUR&lt;/span&gt;
+    </code>
+    <p>Or just in EUR, like this: <span class="jic" data-jic-value="10" data-jic-currency="EUR" data-jic-convert-to="rub, usd">Ten EUR</span></p>
+    <code>
+      &lt;span class="jic" data-jic-value="100" data-jic-currency="rub" data-jic-convert-to="eur, usd"&gt;100 рублей&lt;/span&gt;
+    </code>
+    <p>Or just in rubles, like this: <span class="jic" data-jic-currency="rub" data-jic-convert-to="eur, usd">100 рублей</span></p>
+
+    <p>
+      And then, apply inlineCurrency plugin to your elements:
+    </p>
+
+    <code>
+      $(document).ready(function () {<br>
+      &nbsp;&nbsp;$('.jic').inlineCurrency();<br>
+      });
+    </code>
 </body>
 </html>
