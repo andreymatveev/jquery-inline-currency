@@ -7,7 +7,7 @@
 
     var defaults = {
         "currency": "USD",
-        "convertTo": "RUB,EUR,SEK",
+        "convertTo": "EUR",
         "thousandsSplit": "",
         "decimalsSplit": ".",
         "containerElement": "p",
@@ -16,7 +16,7 @@
         "rateClass": "jic-rate",
         "currencyElement": "span",
         "currencyClass": "jic-currency",
-        "debug": true
+        "debug": false
     };
 
     var updateDeferred = $.Deferred();
