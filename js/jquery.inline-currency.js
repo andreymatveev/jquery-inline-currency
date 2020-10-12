@@ -1,6 +1,6 @@
 (function ($) {
     // plugin current version, please don't change it
-    const version = "0.3.5";
+    const version = "0.3.4";
 
     var LS_NAME = "$$jqueryInlineCurrency$$",
         LS_EXCHANGE = null;
