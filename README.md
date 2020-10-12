@@ -71,7 +71,7 @@ Remember that this parameters can't be equal.
 - `containerElement` and `containerClass` - element that will be appended to each price
 - `rateElement` and `rateClass` - element and class for each exchange rate
 - `currencyElement` and `currencyClass` — element for each currency unit
-- `currencySplit` (Boolean or String) — excludes `rateElement` and generates exchange rates separated by `currencySplit` value
+- `currencySplit` (Boolean or String) — excludes `rateElement` and generates exchange rates separated by `currencySplit` value
 
 ## Inline parameters
 Plugin also supports inline parameters (for exotic cases) which can help set price, base currency and convertTo for each price:
@@ -93,11 +93,11 @@ In the begining it was Yahoo Currencies Service, but in the discussion at `https
 >Robyn Tippins
 >Community Manager, YDN
 
-So, I've decided not to break Yahoo's Terms of Service and have found http://fixer.io/ (https://github.com/hakanensari/fixer-io/). As it is free and has MIT License, it's the best choice for our purposes. Thanks, @hakanensari
+So, I've decided not to break Yahoo's Terms of Service and have found https://www.frankfurter.app/ (https://github.com/hakanensari/frankfurter). As it is free and has MIT License, it's the best choice for our purposes. Thanks, @hakanensari
 
 ## How often do rates update
 
-Once a day (for now, October 2015). Check https://github.com/hakanensari/fixer-io/ for more info.
+Once a day (for now, since October 2015). Check https://github.com/hakanensari/frankfurter for more info.
 
 ## Browser compatibility
 You can check `window.localStorage` use at http://caniuse.com/#search=localstorage

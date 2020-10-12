@@ -9,11 +9,11 @@
         "inline",
         "price"
     ],
-    "version": "0.3.4",
+    "version": "0.3.5",
     "author": {
         "name": "Andrey Matveev",
-        "email": "hello@andreym.com",
-        "url": "http://andreym.com"
+        "email": "hi@andrey.dev",
+        "url": "https://andrey.dev"
     },
     "licenses": [
         {

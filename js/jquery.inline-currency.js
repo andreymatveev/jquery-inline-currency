@@ -1,6 +1,6 @@
 (function ($) {
     // plugin current version, please don't change it
-    const version = "0.3.4";
+    var version = "0.3.5";
 
     var LS_NAME = "$$jqueryInlineCurrency$$",
         LS_EXCHANGE = null;
@@ -98,7 +98,7 @@
 
                 ex = {};
 
-                $.getJSON('http://api.fixer.io/latest', {
+                $.getJSON('//api.frankfurter.app/latest', {
                         base: baseCurrency
                     },
                     function (data) {
